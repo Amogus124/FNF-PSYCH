@@ -62,21 +62,21 @@ class SUtil
             FileSystem.createDirectory(sPath + "/" + "." + Application.current.meta.get("file") + "/files");
         }
 
-        if (!FileSystem.exists(getDataPath + "log")){
-            FileSystem.createDirectory(getDataPath + "log");
+        if (!FileSystem.exists(getPreloadPath + "log")){
+            FileSystem.createDirectory(getPreloadPath + "log");
         }
 
-        if (!FileSystem.exists(getDataPath + "system-saves")){
-            FileSystem.createDirectory(getDataPath + "system-saves");
+        if (!FileSystem.exists(getPreloadPath + "system-saves")){
+            FileSystem.createDirectory(getPreloadPath + "system-saves");
         }
 
-        if (!FileSystem.exists(getDataPath + "assets")){
-            SUtil.applicationAlert("Instructions:", "You have to copy assets/assets from apk to your internal storage app directory " + "( here " + getDataPath + " )" + "if you hadn't have Zarhiver Downloaded, download it and enable the show hidden files option to have the folder visible" + "\n" + "Press Ok To Close The App");
+        if (!FileSystem.exists(getPreloadPath + "assets")){
+            SUtil.applicationAlert("Instructions:", "You have to copy assets/assets from apk to your internal storage app directory " + "( here " + getPreloadPath + " )" + "if you hadn't have Zarhiver Downloaded, download it and enable the show hidden files option to have the folder visible" + "\n" + "Press Ok To Close The App");
             flash.system.System.exit(0);
         }
         
-        if (!FileSystem.exists(getDataPath + "mods")){
-            SUtil.applicationAlert("Instructions:", "You have to copy assets/mods from apk to your internal storage app directory " + "( here " + getDataPath + " )" + "if you hadn't have Zarhiver Downloaded, download it and enable the show hidden files option to have the folder visible" + "\n" + "Press Ok To Close The App");
+        if (!FileSystem.exists(getPreloadPath + "mods")){
+            SUtil.applicationAlert("Instructions:", "You have to copy assets/mods from apk to your internal storage app directory " + "( here " + getPreloadPath + " )" + "if you hadn't have Zarhiver Downloaded, download it and enable the show hidden files option to have the folder visible" + "\n" + "Press Ok To Close The App");
             flash.system.System.exit(0);
         }
         #end
@@ -108,11 +108,11 @@ class SUtil
 
         errMsg += e.error;
 
-        if (!FileSystem.exists(getDataPath + "log")){
-            FileSystem.createDirectory(getDataPath + "log");
+        if (!FileSystem.exists(getPreloadPath + "log")){
+            FileSystem.createDirectory(getPreloadPath + "log");
         }
 
-        sys.io.File.saveContent(getDataPath + path, errMsg + "\n");
+        sys.io.File.saveContent(getPreloadPath + path, errMsg + "\n");
         
         Sys.println(errMsg);
         Sys.println("Crash dump saved in " + Path.normalize(path));
@@ -127,11 +127,11 @@ class SUtil
     }
 
     static public function saveContent(fileName:String = "file", fileExtension:String = ".json", fileData:String = "you forgot something to add in your code"){
-        if (!FileSystem.exists(getDataPath + "system-saves")){
-            FileSystem.createDirectory(getDataPath + "system-saves");
+        if (!FileSystem.exists(getPreloadPath + "system-saves")){
+            FileSystem.createDirectory(getPreloadPath + "system-saves");
         }
 
-        sys.io.File.saveContent(getDataPath + "system-saves/" + fileName + fileExtension, fileData);
-        SUtil.applicationAlert("", "File Saved Successfully!" + "\n" + "The File is saved here " + getDataPath + "system-saves/" + fileName + fileExtension);
+        sys.io.File.saveContent(getPreloadPath + "system-saves/" + fileName + fileExtension, fileData);
+        SUtil.applicationAlert("", "File Saved Successfully!" + "\n" + "The File is saved here " + getPreloadPath + "system-saves/" + fileName + fileExtension);
     }
 }
